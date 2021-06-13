@@ -1,29 +1,29 @@
 create database quan_ly_ban_hang;
 use quan_ly_ban_hang;
 create table customer(
-cID int primary key ,
-cName varchar(40),
-cAge int default 0 check (cAge>0)
+customer_ID int primary key ,
+customer_Name varchar(40),
+customer_Age int default 0 check (customer_Age>0)
 );
 create table orders (
-oID int primary key,
-cID int unique,
-oDate date,
-oTotalPrice float,
-foreign key (cID) references customer(cID)
+orders_ID int primary key,
+customer_ID int ,
+orders_Date date,
+orders_totalPrice float,
+foreign key (customer_ID) references customer(customer_ID)
 );
 create table product(
-pID int primary key,
-pName varchar(20),
-pPrice float 
+product_ID int primary key,
+product_Name varchar(20),
+product_Price float 
 );
 create table orderDetail(
-pID int,
-oID int,
-odQTY varchar(20),
-primary key (pID,oID),
-foreign key(pID) references product(pID),
-foreign key(oID) references orders(oID)
+product_ID int,
+orders_ID int,
+orderDetail_QTY varchar(20),
+primary key (product_ID,orders_ID),
+foreign key(product_ID) references product(product_ID),
+foreign key(orders_ID) references orders(orders_ID)
 );
 
 insert into customer
@@ -37,4 +37,3 @@ values (1,"phi",12),
 insert into orderDetail
 values (1,1,"12"),
 (2,2,"12");
- 
