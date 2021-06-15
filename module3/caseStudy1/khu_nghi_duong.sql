@@ -94,3 +94,47 @@ so_luong int,
 foreign key (id_dich_vu_di_kem) references dich_vu_di_kem(id_dich_vu_di_kem),
 foreign key (id_hop_dong) references hop_dong(id_hop_dong)
 );
+-- 1.	Thêm mới thông tin cho tất cả các bảng có trong CSDL để có thể thõa mãn các yêu cầu bên dưới.
+insert into vi_tri
+values (1,"Quan Ly"),
+(2,"Cham Soc Khach Hang"),
+(3,"Ke Toan"),
+(4,"Lao Cong"),
+(5,"Nhan Vien Phuc Vu");
+ 
+ insert into trinh_do
+values (1,"Thac Si"),
+(2,"Trung Cap Nghe"),
+(3,"Dai Hoc Ke Toan"),
+(4,"12/12"),
+(5,"Cao Dang ");
+
+insert into bo_phan
+values (1,"Quan ly khach hang"),
+(2,"Cham Soc Khach Hang"),
+(3,"Ngan Sach"),
+(4,"Ve Sinh"),
+(5," Phuc Vu");
+
+create table nhan_vien(
+id_nhan_vien int primary key,
+ho_ten varchar(40),
+id_vi_tri int ,
+id_trinh_do int,
+id_bo_phan int ,
+ngay_sinh date,
+so_CMNN varchar (45),
+luong float ,
+SDT varchar(12),
+email varchar (45),
+dia_chi varchar (45),
+foreign key (id_vi_tri) references vi_tri(id_vi_tri),
+foreign key (id_trinh_do) references trinh_do(id_trinh_do),
+foreign key (id_bo_phan) references bo_phan(id_bo_phan)
+);
+insert into nhan_vien
+values (1,"Nguyen Hoang Ngoc Anh",1,1,"1990-12-31",123456789,20000,"090000000","aaaa@gmail.com","Da Nang"),
+(2,"Cham Soc Khach Hang"),
+(3,"Ngan Sach"),
+(4,"Ve Sinh"),
+(5," Phuc Vu");
