@@ -1,4 +1,5 @@
 create database khu_nghi_duong;
+
 use khu_nghi_duong;
 --  tạo table từ mối quan hệ cơ sở dữ liệu quan hệ-- 
 create table vi_tri(
@@ -32,12 +33,12 @@ foreign key (id_bo_phan) references bo_phan(id_bo_phan)
 create table dich_vu_di_kem(
 id_dich_vu_di_kem int primary key,
 ten varchar(45),
-gia float ,
+gia float default 0,
 don_vi int ,
 trang_thai  varchar(45)
 );
 
-create table loai_khach(
+create table loai_khach( 
 id_loai_khach int primary key,
 ten_loai_khach varchar(45)
 );
@@ -90,10 +91,11 @@ create table hop_dong_chi_tiet(
 id_hop_dong_chi_tiet int primary key,
 id_hop_dong int,
 id_dich_vu_di_kem int,
-so_luong int,
+so_luong int default 0,
 foreign key (id_dich_vu_di_kem) references dich_vu_di_kem(id_dich_vu_di_kem),
 foreign key (id_hop_dong) references hop_dong(id_hop_dong)
 );
+
 -- 1.	Thêm mới thông tin cho tất cả các bảng có trong CSDL để có thể thõa mãn các yêu cầu bên dưới.
 insert into vi_tri
 values (1,"Quan Ly"),
@@ -154,17 +156,7 @@ values (1,"biệt thự không mái",100,1,10,2000000,1,1,"Đang trống"),
 (3,"Nhà 5 giường",140,1,10,1000000,3,2,"Đang trống"),
 (4,"Nhà 3 tầng",100,3,10,3000000,3,2,"Đang trống"),
 (5,"Phòng 1 giường",50,1,2,200000,3,3,"Đang trống");
-create table khach_hang(
-id_khach_hang int primary key,
-id_loai_khach int,
-ho_ten varchar(45),
-ngay_sinh date ,
-so_cmnd varchar(45),
-SDT  varchar(12),
-email varchar(45),
-dia_chi varchar(45),
-foreign key (id_loai_khach) references loai_khach(id_loai_khach)
-);
+
 insert into khach_hang
 values (1,1,"Nguyễn Thi Mai Khanh","1990-11-30",11111111,1111222234,"123@gmail.com","Đà nẵng"),
 (2,2,"Nguyễn Thi Mai Hạnh","1987-11-30",11111111,1111222234,"123@gmail.com","Quãng Trị"),
@@ -203,5 +195,22 @@ and (dia_chi ="Đà nẵng" or dia_chi ="Quãng trị");
 -- 4.	Đếm xem tương ứng với mỗi khách hàng đã từng đặt phòng bao nhiêu lần.
 --  Kết quả hiển thị được sắp xếp tăng dần theo số lần đặt phòng của khách hàng.
 --  Chỉ đếm những khách hàng nào có Tên loại khách hàng là “Diamond”.
+select k.ho_ten ,count(h.id_khach_hang) as "số lần khách hàng VIP đã đặt phòng"
+from khach_hang k 
+join hop_dong h on h.id_khach_hang = k.id_khach_hang
+join loai_khach l on l.id_loai_khach=k.id_loai_khach
+where l.ten_loai_khach="VIP"
+group by k.ho_ten
+order by count(l.id_loai_khach);
+-- 5.	Hiển thị IDKhachHang, HoTen, TenLoaiKhach, IDHopDong, TenDichVu, NgayLamHopDong, NgayKetThuc, TongTien 
 
-
+select kh.id_khach_hang,kh.ho_ten,lk.ten_loai_khach ,hd.id_hop_dong,dv.ten_dich_vu,
+hd.ngay_lam_hop_dong , hd.ngay_ket_thuc , sum(hdct.so_luong * dvdk.gia) + dv.chi_phi_thue as 'tổng tiền'
+from khach_hang kh
+left join hop_dong hd on hd.id_khach_hang = kh.id_khach_hang
+left join loai_khach lk on lk.id_loai_khach = kh.id_loai_khach
+left join dich_vu dv on dv.id_dich_vu = hd.id_dich_vu
+left join hop_dong_chi_tiet hdct on hdct.id_hop_dong=hd.id_hop_dong
+left join dich_vu_di_kem dvdk on dvdk.id_dich_vu_di_kem = hdct.id_dich_vu_di_kem
+group by hd.id_hop_dong ,kh.id_khach_hang;
+ 
