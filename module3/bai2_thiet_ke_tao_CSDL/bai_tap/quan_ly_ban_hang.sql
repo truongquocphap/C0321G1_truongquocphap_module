@@ -1,4 +1,5 @@
 create database quan_ly_ban_hang;
+-- drop database quan_ly_ban_hang;
 use quan_ly_ban_hang;
 create table customer(
 customer_ID int primary key ,
@@ -25,15 +26,3 @@ primary key (product_ID,orders_ID),
 foreign key(product_ID) references product(product_ID),
 foreign key(orders_ID) references orders(orders_ID)
 );
-
-insert into customer
-values (1,"phap",17),
-(2,"chau",20);
-insert into orders
-values(2,2,"1111-11-11",113);
-insert into product
-values (1,"phi",12),
-(2,"anh",15);
-insert into orderDetail
-values (1,1,"12"),
-(2,2,"12");
