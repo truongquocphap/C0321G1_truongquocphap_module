@@ -10,7 +10,7 @@ join mark on mark.sub_id =subject_.sub_id
 where mark =(select max(mark) from mark );
 -- Hiển thị các thông tin sinh viên và điểm trung bình của mỗi sinh viên, 
 -- xếp hạng theo thứ tự điểm giảm dần
-select st.student_id,st.student_name,st.phone  ,avg(mark.mark) as "điểm trung bình"
+select st.student_id,st.student_name,st.phone  ,avg(mark.mark) as "medium score"
 from student st
 join mark on mark.student_id=st.student_id
 group by st.student_id 
