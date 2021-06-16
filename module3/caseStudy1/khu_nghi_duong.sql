@@ -132,6 +132,8 @@ values (1,"Ăn bánh xèo giá rẻ ",2000,5,"đang thực hiện"),
 (4,"Tắm hồ sen ",2000,5,"đang thực hiện"),
 (5,"Karaoke ",2000,5,"đang thực hiện");
 
+insert into dich_vu_di_kem 
+values (6," ",0,0,"");
  insert into loai_khach
 values (1,"VIP"),
 (2,"Thượng lưu"),
@@ -177,7 +179,10 @@ values (1,1,3,2),
 (2,2,2,5),
 (3,3,1,4),
 (4,1,4,1),
-(5,2,5,2);
+(5,2,5,2),
+(6,4,6,0),
+(6,5,6,0);
+
 -- 2.	Hiển thị thông tin của tất cả nhân viên có trong hệ thống 
 -- có tên bắt đầu là một trong các ký tự “H”, “T” hoặc “K” và có tối đa 15 ký tự.
 select ho_ten ,SUBSTRING_INDEX(ho_ten, ' ', -1) as "tên có chữ H,K,T "
