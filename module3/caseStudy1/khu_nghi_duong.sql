@@ -26,9 +26,9 @@ luong float ,
 SDT varchar(12),
 email varchar (45),
 dia_chi varchar (45),
-foreign key (id_vi_tri) references vi_tri(id_vi_tri),
-foreign key (id_trinh_do) references trinh_do(id_trinh_do),
-foreign key (id_bo_phan) references bo_phan(id_bo_phan)
+foreign key (id_vi_tri) references vi_tri(id_vi_tri)    ON DELETE CASCADE,
+foreign key (id_trinh_do) references trinh_do(id_trinh_do)   ON DELETE CASCADE,
+foreign key (id_bo_phan) references bo_phan(id_bo_phan)    ON DELETE CASCADE
 );
 create table dich_vu_di_kem(
 id_dich_vu_di_kem int primary key,
@@ -51,7 +51,7 @@ so_cmnd varchar(45),
 SDT  varchar(12),
 email varchar(45),
 dia_chi varchar(45),
-foreign key (id_loai_khach) references loai_khach(id_loai_khach)
+foreign key (id_loai_khach) references loai_khach(id_loai_khach)    ON DELETE CASCADE
 );
 create table kieu_thue(
 id_kieu_thue int primary key,
@@ -71,8 +71,8 @@ chi_phi_thue float ,
 id_kieu_thue int,
 id_loai_dich_vu int,
 trang_thai varchar(45),
-foreign key (id_kieu_thue) references kieu_thue(id_kieu_thue),
-foreign key (id_loai_dich_vu) references loai_dich_vu(id_loai_dich_vu)
+foreign key (id_kieu_thue) references kieu_thue(id_kieu_thue)    ON DELETE CASCADE,
+foreign key (id_loai_dich_vu) references loai_dich_vu(id_loai_dich_vu)    ON DELETE CASCADE
 );
 create table hop_dong(
 id_hop_dong int primary key,
@@ -83,19 +83,19 @@ ngay_lam_hop_dong date,
 ngay_ket_thuc date,
 tien_dat_coc float,
 tong_tien float,
-foreign key (id_nhan_vien) references nhan_vien(id_nhan_vien),
-foreign key (id_khach_hang) references khach_hang(id_khach_hang),
-foreign key (id_dich_vu) references dich_vu(id_dich_vu)
+foreign key (id_nhan_vien) references nhan_vien(id_nhan_vien)   ON DELETE CASCADE,
+foreign key (id_khach_hang) references khach_hang(id_khach_hang)   ON DELETE CASCADE,
+foreign key (id_dich_vu) references dich_vu(id_dich_vu)   ON DELETE CASCADE
 );
 create table hop_dong_chi_tiet(
 id_hop_dong_chi_tiet int primary key,
 id_hop_dong int,
 id_dich_vu_di_kem int,
 so_luong int default 0,
-foreign key (id_dich_vu_di_kem) references dich_vu_di_kem(id_dich_vu_di_kem),
-foreign key (id_hop_dong) references hop_dong(id_hop_dong)
+foreign key (id_dich_vu_di_kem) references dich_vu_di_kem(id_dich_vu_di_kem)   ON DELETE CASCADE,
+foreign key (id_hop_dong) references hop_dong(id_hop_dong)   ON DELETE CASCADE
 );
-
+-- drop database khu_nghi_duong; 
 -- 1.	Thêm mới thông tin cho tất cả các bảng có trong CSDL để có thể thõa mãn các yêu cầu bên dưới.
 insert into vi_tri
 values (1,"Quan Ly"),
@@ -161,16 +161,16 @@ values (1,"biệt thự không mái",100,1,10,2000000,1,1,"Đang trống"),
 
 insert into khach_hang
 values (1,1,"Nguyễn Thi Mai Khanh","1990-11-30",11111111,1111222234,"123@gmail.com","Đà nẵng"),
-(2,2,"Nguyễn Thi Mai Hạnh","1987-11-30",11111111,1111222234,"123@gmail.com","Quãng Trị"),
-(3,3,"Nguyễn Thanh Khá","1789-11-30",11111111,1111222234,"123@gmail.com","Quãng ngãi"),
-(4,4,"Nguyễn Tuyết","2002-11-30",11111111,1111222234,"123@gmail.com","Quãng Trị"),
-(5,5,"Nguyễn Thi Mai","2009-11-30",11111111,1111222234,"123@gmail.com","Đà nẵng");
+(2,2,"Nguyễn Thi Mai Khanh","1987-11-30",11111111,1111222234,"1234@gmail.com","Quãng Trị"),
+(3,3,"Nguyễn Thanh Khá","1789-11-30",11111111,1111222234,"1235@gmail.com","Quãng ngãi"),
+(4,4,"Nguyễn Tuyết","2002-11-30",11111111,1111222234,"1236@gmail.com","Quãng Trị"),
+(5,5,"Nguyễn Thi Mai","2009-11-30",11111111,1111222234,"1237@gmail.com","Đà nẵng");
 
 
 insert into hop_dong
 values (1,1,1,1,"2020-11-30","2020-12-31",1000,null),
-(2,2,1,4,"2020-11-30","2020-12-31",1000,null),
-(3,3,2,5,"2019-11-13","2020-01-31",1000,null),
+(2,2,1,4,"2019-01-30","2020-12-31",1000,null),
+(3,3,2,5,"2019-04-13","2020-01-31",1000,null),
 (4,3,3,3,"2018-11-11","2020-01-31",1000,null),
 (5,5,3,1,"2020-11-13","2020-12-31",1000,null);
 
@@ -181,7 +181,7 @@ values (1,1,3,2),
 (4,1,4,1),
 (5,2,5,2),
 (6,4,6,0),
-(6,5,6,0);
+(7,5,6,0);
 
 -- 2.	Hiển thị thông tin của tất cả nhân viên có trong hệ thống 
 -- có tên bắt đầu là một trong các ký tự “H”, “T” hoặc “K” và có tối đa 15 ký tự.
@@ -310,12 +310,154 @@ having count(hdct.id_dich_vu_di_kem) =(select  max(số_lượng)
 from `max`);
  drop  table `max`;
 -- 14.	Hiển thị thông tin tất cả các Dịch vụ đi kèm chỉ mới được sử dụng một lần duy nhất.
--- Thông tin hiển thị bao gồm IDHopDong, TenLoaiDichVu, TenDichVuDiKem, SoLanSuDung.
-select hd.id_hop_dong , ldv.ten_loai_dich_vu,dvdk.ten,count(hdct.id_dich_vu_di_kem)
+-- Thông tin hiển thị bao gồm IDHopDong, TenLoaiDichVu, SoLanSuDung.
+select hd.id_hop_dong , ldv.ten_loai_dich_vu,count(hdct.id_dich_vu_di_kem) as 'số lần'
 from  dich_vu_di_kem dvdk
 join hop_dong_chi_tiet hdct on hdct.id_dich_vu_di_kem=dvdk.id_dich_vu_di_kem
-join hop_dong hd on hdct.id_hop_dong = hd.id_hop_dong
+join hop_dong hd on  hd.id_hop_dong=hdct.id_hop_dong 
 join dich_vu dv on dv.id_dich_vu=hd.id_dich_vu
 join loai_dich_vu ldv on ldv.id_loai_dich_vu = dv.id_loai_dich_vu
-group by  ldv.ten_loai_dich_vu;
+group by hd.id_hop_dong 
+having count(hdct.id_dich_vu_di_kem)=1;
+-- 15.	Hiển thi thông tin của tất cả nhân viên bao gồm IDNhanVien, HoTen, TrinhDo,
+-- TenBoPhan, SoDienThoai, DiaChi mới chỉ lập được tối đa 3 hợp đồng từ năm 2018 đến 2019.
+select nv.id_nhan_vien, nv.ho_ten,td.trinh_do,bp.ten_bo_phan,nv.SDT,nv.dia_chi, count(nv.id_nhan_vien) as 'so_lan'
+from   nhan_vien nv
+join hop_dong hd on hd.id_nhan_vien= nv.id_nhan_vien
+join bo_phan bp on bp.id_bo_phan = nv.id_bo_phan
+join trinh_do td on td.id_trinh_do = nv.id_trinh_do
+where year(hd.ngay_lam_hop_dong) in ('2019','2018') 
+group by nv.id_nhan_vien
+having count(nv.id_nhan_vien)<=3;
+-- 16.	Xóa những Nhân viên chưa từng lập được hợp đồng nào từ năm 2017 đến năm 2019.
+create temporary table id_nhan_vien(
+select hd.id_nhan_vien from hop_dong hd 
+where year(hd.ngay_lam_hop_dong)  in ('2017','2018','2019')
+);
+delete from nhan_vien 
+where id_nhan_vien not in ( select id_nhan_vien from id_nhan_vien); ;
+-- drop table id_nhan_vien;
+-- 17.	Cập nhật thông tin những khách hàng có TenLoaiKhachHang từ  Thỉnh thoảng lên Diamond, 
+-- chỉ cập nhật những khách hàng đã từng đặt phòng với tổng Tiền thanh toán trong năm 2019 là lớn hơn 10.000.000 VNĐ.
+ create temporary table tong_tien( select  lk.id_loai_khach, sum(case when hdct.so_luong is null then 0 else hdct.so_luong*dvdk.gia end )  + dv.chi_phi_thue as 'tổng_tiền'
+from khach_hang kh
+left join hop_dong hd on hd.id_khach_hang = kh.id_khach_hang
+left join loai_khach lk on lk.id_loai_khach = kh.id_loai_khach
+left join dich_vu dv on dv.id_dich_vu = hd.id_dich_vu
+left join hop_dong_chi_tiet hdct on hdct.id_hop_dong=hd.id_hop_dong
+left join dich_vu_di_kem dvdk on dvdk.id_dich_vu_di_kem = hdct.id_dich_vu_di_kem
+where year(hd.ngay_lam_hop_dong) in ('2019') 
+group by hd.id_hop_dong ,kh.id_khach_hang
+ having tổng_tiền >=10000000 ); 
+ drop table id_khach_hang;
+update loai_khach 
+set ten_loai_khach = 'Diamond'
+where ten_loai_khach in ('Thỉnh thoảng') and id_loai_khach in  (select id_loai_khach
+from tong_tien) ;
+-- 18.	Xóa những khách hàng có hợp đồng trước năm 2016 (chú ý ràngbuộc giữa các bảng).
+create temporary table id_khach_hang (select kh.id_khach_hang as id
+from khach_hang kh
+join hop_dong hd on hd.id_khach_hang=kh.id_khach_hang
+where  year(hd.ngay_lam_hop_dong) <2016 );
+delete from khach_hang
+where id_khach_hang in (select id 
+from id_khach_hang);
+-- 19.	Cập nhật giá cho các Dịch vụ đi kèm được sử dụng trên 10 lần trong năm 2019 lên gấp đôi.
+create temporary table bang_tam(
+ select dvdk.id_dich_vu_di_kem, sum(hdct.so_luong) as 'so_luong'
+from dich_vu_di_kem dvdk 
+join hop_dong_chi_tiet hdct on hdct.id_dich_vu_di_kem =dvdk.id_dich_vu_di_kem
+join hop_dong hd on hd.id_hop_dong = hdct.id_hop_dong
+join khach_hang kh on kh.id_khach_hang=hd.id_khach_hang
+where year(hd.ngay_lam_hop_dong) in ('2019')
+group by dvdk.id_dich_vu_di_kem
+having so_luong >=10);
+drop table bang_tam;
+update dich_vu_di_kem
+set gia = gia*2
+where id_dich_vu_di_kem in (select id_dich_vu_di_kem
+from bang_tam)
+;
+-- 20.	Hiển thị thông tin của tất cả các Nhân viên và Khách hàng có trong hệ thống, thông tin hiển thị bao gồm ID
+-- (IDNhanVien, IDKhachHang), HoTen, Email, SoDienThoai, NgaySinh, DiaChi.
+select id_khach_hang,ho_ten,email,SDT,ngay_sinh,dia_chi
+from khach_hang 
+union all 
+select id_nhan_vien,ho_ten,email,SDT,ngay_sinh,dia_chi
+from nhan_vien;
+-- 21.	Tạo khung nhìn có tên là V_NHANVIEN để lấy được thông tin của tất cả các nhân viên có địa chỉ là “Hải Châu” 
+-- và đã từng lập hợp đồng cho 1 hoặc nhiều Khách hàng bất kỳ  với ngày lập hợp đồng là “12/12/2019”
+create view V_NHANVIEN as
+select nv.*
+from nhan_vien nv
+ join hop_dong hd on hd.id_nhan_vien = nv.id_nhan_vien
+ where hd.ngay_lam_hop_dong in ('2019-12-12') and nv.dia_chi in ('Hải Châu')
+;
+-- 22.	Thông qua khung nhìn V_NHANVIEN thực hiện cập nhật địa chỉ thành 
+-- “Liên Chiểu” đối với tất cả các Nhân viên được nhìn thấy bởi khung nhìn này.
+update V_NHANVIEN
+set dia_chi='Liên Chiểu';
+--  23.	Tạo Clustered Index có tên là IX_KHACHHANG trên bảng Khách hàng.
+-- Giải thích lý do và thực hiện kiểm tra tính hiệu quả của việc sử dụng INDEX
+
+-- lý do khi sử dụng index là lúc ta truy xuất dữ liệu lơn thì việc tạo index này rất hữu dụng
+-- tại vì dựa vào index nó chỉ kiểm tra 1 lần trong tất cả dữ liệu có trong danh sách và sau đây là code để 
+--  kiểm tra
+-- khi chưa tạo index 
+explain select * 
+from khach_hang  
+where ho_ten ='Nguyễn Thị Mai';
+-- khi tạo index cho trường name
+create unique index IX_KHACHHANG 
+on khach_hang(ho_ten);
+-- kiểm tra quá trình thực hiện
+explain select * 
+from khach_hang  
+where ho_ten ='Nguyễn Thị Mai';
+-- 24.	Tạo Non-Clustered Index có tên là IX_SoDT_DiaChi trên các cột SODIENTHOAI 
+-- và DIACHI trên bảng KHACH HANG và kiểm tra tính hiệu quả tìm kiếm sau khi tạo Index.
+create index IX_SoDT_DiaChi
+on khach_hang(SDT,dia_chi);
+-- hiệu quả sau khi tạo index
+explain select *
+from khach_hang
+where SDT ='090000003';
+explain select *
+from khach_hang
+where dia_chi ='Quang Tri';
+-- 25.	Tạo Store procedure Sp_1 Dùng để xóa thông tin của một Khách hàng nào đó 
+-- với Id Khách hàng được truyền vào như là 1 tham số của Sp_1
+delimiter //
+create procedure Sp_1( id_khach_hang_in int )
+begin 
+delete from khach_hang
+where id_khach_hang = id_khach_hang_in;
+end //
+delimiter ;
+call Sp_1(2);
+-- 26.	Tạo Store procedure Sp_2 Dùng để thêm mới vào bảng HopDong với yêu cầu Sp_2
+-- phải thực hiện kiểm tra tính hợp lệ của dữ liệu bổ sung, với nguyên tắc không được trùng khóa chính và
+-- đảm bảo toàn vẹn tham chiếu đến các bảng liên quan.
+delimiter //
+create procedure Sp_2(id_hop_dong_in int , id_nhan_vien_in int, id_khach_hang_in int , id_dich_vu_in int , ngay_lam_hop_dong_in date, ngay_ket_thuc_in date, tien_dat_coc_in float , tong_tien_in float)
+begin 
+if id_hop_dong_in not in (select id_hop_dong from hop_dong) and
+id_nhan_vien_in  in (select id_nhan_vien from nhan_vien) and
+id_khach_hang_in  in (select id_khach_hang from khach_hang) and
+id_dich_vu_in  in (select id_dich_vu from dich_vu)
+then 
+insert into hop_dong
+values (id_hop_dong_in , id_nhan_vien_in, id_khach_hang_in , id_dich_vu_in , ngay_lam_hop_dong_in , ngay_ket_thuc_in , tien_dat_coc_in , tong_tien_in);
+	else 
+    SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = "Thêm không thành công";
+        end if;
+end //
+delimiter ;
+call Sp_2(8,3,3,5,'2020-10-21','2020-11-01',2000,null);
+-- 27.	Tạo triggers có tên Tr_1 Xóa bản ghi trong bảng HopDong thì hiển thị tổng số lượng bản ghi còn lại có trong bảng HopDong ra giao diện console của database
+
+
+
+
+
 
