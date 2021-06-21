@@ -2,12 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="aa9b765b-f644-4651-8bd0-5412a2c50b77" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/bai06_css/bai_tap/css_html.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bai06_css/bai_tap/dinh_dang_van_ban.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bai06_css/bai_tap/muc_luc_truyen/bach_hai_nguyet_ca.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bai06_css/bai_tap/muc_luc_truyen/module3/biet_may_tuong_tu.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bai06_css/bai_tap/nhung_css.link.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bai06_css/bai_tap/trang_doc_truyen.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bai06_css/thuc_hanh/su_dung_CSS.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bai06_css/bai_tap/muc_luc_truyen/module3/biet_may_tuong_tu.html" beforeDir="false" afterPath="$PROJECT_DIR$/bai06_css/bai_tap/muc_luc_truyen/biet_may_tuong_tu.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,9 +36,9 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/bai06_css/bai_tap/muc_luc_truyen" />
       <recent name="$PROJECT_DIR$/bai06_css/img" />
       <recent name="$PROJECT_DIR$/bai06_css/bai_tap" />
-      <recent name="$PROJECT_DIR$/bai06_css/bai_tap/muc_luc_truyen" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -55,6 +51,7 @@
       <updated>1624163430592</updated>
       <workItem from="1624163432459" duration="15460000" />
       <workItem from="1624248406624" duration="8632000" />
+      <workItem from="1624259880996" duration="182000" />
     </task>
     <servers />
   </component>
