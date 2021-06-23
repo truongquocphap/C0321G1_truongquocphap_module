@@ -8,7 +8,7 @@
     top: 0;
 
 }
-.header img,.phap_cp{
+.header img,.phap-cp{
 
     position: sticky;
     display: inline-block;
@@ -16,31 +16,31 @@
 
 }
 
-.phap_cp{
+.phap-cp{
    font-family: "Parisienne" , Papyrus;
     color: mediumpurple;
     margin: 0 0 20px 0;
 }
-.link_nav{
+.link-nav{
     padding: 0;
     margin: 0;
     width: 100%;
     height: 30px;
 }
-.link_nav h5{
+.link-nav h5{
     display: inline-block;
     float: left;
     padding: 10px;
     width: 15%;
 }
-.link_nav h5:hover{
+.link-nav h5:hover{
     color: fuchsia;
     cursor: pointer;
 }
-.left_contern .sub-contern{
+.left-contern .sub-contern{
     clear: both;
 }
-.left_contern{
+.left-contern{
     display: inline-block;
     width: 30%
 }
@@ -51,7 +51,7 @@
 left_contern p{
     display: inline-block;
 }
-.right_contern .left_contern{
+.right_contern .left-contern{
     float: left;
 }
 .footer{

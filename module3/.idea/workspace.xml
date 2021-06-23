@@ -5,18 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="aa9b765b-f644-4651-8bd0-5412a2c50b77" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/bai07_thiet_ke_bo_cuc_web/bai_tap/tao_layout.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bai07_thiet_ke_bo_cuc_web/bai_tap/tao_layout_RWD.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bai07_thiet_ke_bo_cuc_web/bai_tap/tao_layout_style.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bai07_thiet_ke_bo_cuc_web/bai_tap/web_hoat_hinh.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bai07_thiet_ke_bo_cuc_web/bai_tap/web_hoat_hinh_style.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bai07_thiet_ke_bo_cuc_web/thuc_hanh/box_model.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bai07_thiet_ke_bo_cuc_web/thuc_hanh/menu_doc.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bai07_thiet_ke_bo_cuc_web/thuc_hanh/menu_doc_style.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bai07_thiet_ke_bo_cuc_web/thuc_hanh/menu_ngang.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bai07_thiet_ke_bo_cuc_web/thuc_hanh/menu_ngang_style.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bài_test/test1.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bai08_bootstrap/bai_tap/all_microsoft.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bai08_bootstrap/bai_tap/gallery_bootstrap.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bai08_bootstrap/bai_tap/landing_age.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bai08_bootstrap/thuc_hanh/form_login_bootstrap.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bai08_bootstrap/thuc_hanh/style.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bai06_css/bai_tap/trang_doc_truyen.html" beforeDir="false" afterPath="$PROJECT_DIR$/bai06_css/bai_tap/trang_doc_truyen.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bai07_thiet_ke_bo_cuc_web/bai_tap/tao_layout_RWD.html" beforeDir="false" afterPath="$PROJECT_DIR$/bai07_thiet_ke_bo_cuc_web/bai_tap/tao_layout_RWD.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bai07_thiet_ke_bo_cuc_web/bai_tap/web_hoat_hinh.html" beforeDir="false" afterPath="$PROJECT_DIR$/bai07_thiet_ke_bo_cuc_web/bai_tap/web_hoat_hinh.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bai07_thiet_ke_bo_cuc_web/bai_tap/web_hoat_hinh_style.css" beforeDir="false" afterPath="$PROJECT_DIR$/bai07_thiet_ke_bo_cuc_web/bai_tap/web_hoat_hinh_style.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,6 +66,11 @@
       <workItem from="1624260164395" duration="181000" />
       <workItem from="1624332400616" duration="19317000" />
       <workItem from="1624369536244" duration="883000" />
+      <workItem from="1624409150017" duration="367000" />
+      <workItem from="1624410968528" duration="627000" />
+      <workItem from="1624420747857" duration="3126000" />
+      <workItem from="1624429666893" duration="6503000" />
+      <workItem from="1624436399601" duration="14088000" />
     </task>
     <servers />
   </component>
