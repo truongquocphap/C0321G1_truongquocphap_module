@@ -1,11 +1,12 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: truongquocphap
   Date: 6/29/21
-  Time: 3:45 PM
+  Time: 11:10 PM
   To change this template use File | Settings | File Templates.
 --%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -16,27 +17,35 @@
     <h3>Product List empty!</h3>
 </c:if>
 <c:if test="${not empty product}">
+    <p>
+        <a href="/products">Create Product</a>
+
+        <a href="/products?action=search">Search Product</a>
+    </p>
     <table style="border: 2px solid magenta">
         <tr>
             <td>ID</td>
             <td>Name</td>
             <td>CodeProduct</td>
             <td>producer</td>
+            <td>Edit</td>
+            <td>Delete</td>
         </tr>
-        <:c:forEach items="${product}" var="products">
+        <c:forEach items="${product}" var="products">
             <tr>
-                <td>${products.id}</td>
+                <td id="id">${products.id}</td>
                 <td>${products.name}</td>
                 <td>${products.codeProduct}</td>
                 <td>${products.producer}</td>
-                <td><input type="button" value="Edit"></td>
-                <td><input type="button" value="Delete"></td>
+                <td>
+                    <a href="/products?action=edit&id=${products.getId()}">Edit</a>
+                </td>
+                <td>
+                    <a href="/products?action=delete&id=${products.getId()}">Delete</a>
+                </td>
             </tr>
-        </:c:forEach>
+        </c:forEach>
     </table>
 </c:if>
-<fieldset>
-
-</fieldset>
 </body>
 </html>

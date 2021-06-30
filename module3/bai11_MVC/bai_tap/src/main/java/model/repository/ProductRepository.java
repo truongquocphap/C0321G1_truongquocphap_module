@@ -10,4 +10,6 @@ public interface ProductRepository {
     Product finById(int id);
     void remove(int id);
    List<Product>  findByName(String name);
+//   void edit(int id,String name,String codeProduct,String producer);
+
 }

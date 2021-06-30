@@ -380,10 +380,10 @@ from bang_tam)
 ;
 -- 20.	Hiển thị thông tin của tất cả các Nhân viên và Khách hàng có trong hệ thống, thông tin hiển thị bao gồm ID
 -- (IDNhanVien, IDKhachHang), HoTen, Email, SoDienThoai, NgaySinh, DiaChi.
-select id_khach_hang,ho_ten,email,SDT,ngay_sinh,dia_chi
+select id_khach_hang,ho_ten,email,SDT,ngay_sinh,dia_chi,'khach_hang' as `type`
 from khach_hang 
 union all 
-select id_nhan_vien,ho_ten,email,SDT,ngay_sinh,dia_chi
+select id_nhan_vien,ho_ten,email,SDT,ngay_sinh,dia_chi,'nhan_vien'
 from nhan_vien;
 -- 21.	Tạo khung nhìn có tên là V_NHANVIEN để lấy được thông tin của tất cả các nhân viên có địa chỉ là “Hải Châu” 
 -- và đã từng lập hợp đồng cho 1 hoặc nhiều Khách hàng bất kỳ  với ngày lập hợp đồng là “12/12/2019”
