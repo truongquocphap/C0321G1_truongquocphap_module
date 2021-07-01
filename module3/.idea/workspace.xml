@@ -5,7 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="aa9b765b-f644-4651-8bd0-5412a2c50b77" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/bai09_tong_quan_web/thuc_hanh/hien_thi_loi_chao/src/test/java/aa.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bai12_JDBC/thuc_hanh/src/main/java/controller/UserServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bai12_JDBC/thuc_hanh/src/main/java/model/UserRepository/DBConnection.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bai12_JDBC/thuc_hanh/src/main/java/model/UserRepository/UserRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bai12_JDBC/thuc_hanh/src/main/java/model/UserRepository/UserRepositoryIplm.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bai12_JDBC/thuc_hanh/src/main/java/model/UserService/UserService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bai12_JDBC/thuc_hanh/src/main/java/model/UserService/UserServiceIplm.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bai12_JDBC/thuc_hanh/src/main/java/model/bean/User.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bai12_JDBC/thuc_hanh/src/main/webapp/view/create.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bai12_JDBC/thuc_hanh/src/main/webapp/view/delete.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bai12_JDBC/thuc_hanh/src/main/webapp/view/edit.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bai12_JDBC/thuc_hanh/src/main/webapp/view/list.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bai08_bootstrap/bai_tap/gallery_bootstrap.html" beforeDir="false" afterPath="$PROJECT_DIR$/bai08_bootstrap/bai_tap/gallery_bootstrap.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,6 +78,9 @@
       <workItem from="1624460630925" duration="813000" />
       <workItem from="1624585834375" duration="93000" />
       <workItem from="1624585951857" duration="14000" />
+      <workItem from="1625102347304" duration="1195000" />
+      <workItem from="1625110888409" duration="221000" />
+      <workItem from="1625124803770" duration="26000" />
     </task>
     <servers />
   </component>
