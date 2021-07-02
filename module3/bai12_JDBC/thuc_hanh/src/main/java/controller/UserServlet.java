@@ -1,9 +1,7 @@
 package controller;
 
-import model.UserRepository.UserRepository;
-import model.UserRepository.UserRepositoryIplm;
-import model.UserService.UserService;
-import model.UserService.UserServiceIplm;
+import model.Service.UserService;
+import model.Service.UserServiceIplm;
 import model.bean.User;
 
 import javax.servlet.RequestDispatcher;
