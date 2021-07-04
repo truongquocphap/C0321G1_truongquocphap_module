@@ -90,10 +90,24 @@ public class UserServlet extends javax.servlet.http.HttpServlet {
             case "permision":
                 addUserPermision(request, response);
                 break;
+            case "test_without_tran":
+                testWithoutTran(request, response);
+                break;
+            case "test_use_tran":
+                test_use_tran(request, response);
+                break;
             default:
                 sortName(request, response);
                 break;
         }
+    }
+
+    private void test_use_tran(HttpServletRequest request, HttpServletResponse response) {
+        userService.insertUpdateTransaction();
+    }
+
+    private void testWithoutTran(HttpServletRequest request, HttpServletResponse response) {
+        userService.insertUpdateWithoutTransaction();
     }
 
     private void addUserPermision(HttpServletRequest request, HttpServletResponse response) {

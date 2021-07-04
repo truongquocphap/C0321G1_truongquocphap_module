@@ -1,11 +1,13 @@
 package model.Repository;
 
 
+import java.math.BigDecimal;
 import java.sql.*;
 
 import model.bean.User;
 
 import java.sql.*;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,6 +21,16 @@ public class UserRepositoryIplm implements UserRepository {
     private static final String SELECT_USER_ID= "call fin_by_id(?) ";
     private static final String INSERT_USERS_STORE= "{CALL insert_user(?,?,?)} ";
     private static final String INSERT_USERS= "insert into users (`name`,email,country) VALUES(?,?,?) ";
+    private static final String SQL_INSERT= "insert into employee (`name`,salary,create_date) VALUES(?,?,?) ";
+    private static final String SQL_UPDATE= "UPDATE employee SET salary = ? where `name` = ? ";
+    private static final String CREATE_TABLE= "CREATE TABLE employee (" +
+            "id serial," +
+            "`name` varchar(55) ," +
+            "salary numeric(15 , 2) NOT NULL ," +
+            "create_date timestamp," +
+            "PRIMARY KEY (id) )";
+    private static final String TABLE_DROP= "DROP TABLE  IF EXISTS employee ";
+
 
     DBConnection dtbase=new DBConnection();
     @Override
@@ -336,5 +348,71 @@ public class UserRepositoryIplm implements UserRepository {
             }
         }
 
+    }
+// thực hành 3:không sử dụng transaction
+    @Override
+    public void insertUpdateWithoutTransaction() {
+        Connection connection=dtbase.getConnection();
+        Statement statement=null;
+        PreparedStatement psInsert=null;
+        PreparedStatement psUpdate=null;
+        try{
+            statement=connection.createStatement();
+            psInsert=connection.prepareStatement(SQL_INSERT);
+            psUpdate=connection.prepareStatement(SQL_UPDATE);
+            statement.execute(TABLE_DROP);
+            statement.execute(CREATE_TABLE);
+            psInsert.setString(1,"Quynh");
+//            chua hieu
+            psInsert.setBigDecimal(2,new BigDecimal(10));
+            psInsert.setTimestamp(3,Timestamp.valueOf(LocalDateTime.now()));
+            psInsert.execute();
+
+
+            psUpdate.setBigDecimal(2,new BigDecimal(999.99));
+            psUpdate.setString(2,"Quynh");
+            psUpdate.execute();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }finally {
+            try {
+                psUpdate.close();
+                psInsert.close();
+                statement.close();
+                connection.close();
+
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    @Override
+    public void insertUpdateTransaction() {
+Connection connection=dtbase.getConnection();
+        try {
+            Statement statement=connection.createStatement();
+            PreparedStatement psInsert=connection.prepareStatement(SQL_INSERT);
+            PreparedStatement psUpdate=connection.prepareStatement(SQL_UPDATE);
+            statement.execute(TABLE_DROP);
+            connection.setAutoCommit(false);
+            psInsert.setString(1,"Quynh");
+psInsert.setBigDecimal(2,new BigDecimal(10));
+psInsert.setTimestamp(3,Timestamp.valueOf(LocalDateTime.now()));
+psInsert.execute();
+psInsert.setString(1,"Ngan");
+psInsert.setBigDecimal(2,new BigDecimal(20));
+psInsert.setTimestamp(3,Timestamp.valueOf(LocalDateTime.now()));
+psInsert.execute();
+
+
+psUpdate.setBigDecimal(2,new BigDecimal(999.99));
+psUpdate.setString(2,"quynh");
+psUpdate.execute();
+connection.commit();
+connection.setAutoCommit(true);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 }

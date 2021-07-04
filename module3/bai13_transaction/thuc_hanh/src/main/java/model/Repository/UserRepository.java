@@ -16,4 +16,7 @@ public interface UserRepository {
     public List<User> searchId(int id);
     public void insertUserStore(User user);
     void addUserTransaction(User user,int [] permision);
+    public void insertUpdateWithoutTransaction();
+    public void insertUpdateTransaction();
+
 }

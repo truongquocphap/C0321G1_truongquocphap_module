@@ -5,7 +5,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class DBConnection {
-    private String jdbcURL= "jdbc:mysql://localhost:3306/demo?useSSL=false";
+    private String jdbcURL= "jdbc:mysql://localhost:3306/test?useSSL=false";
     private String jdbcUserName = "root";
     private String jdbcPassword ="0966997711";
 
@@ -19,6 +19,12 @@ public class DBConnection {
             e.printStackTrace();
         }
         return connection;
+    }
+
+    public static void main(String[] args) {
+        DBConnection connection=new DBConnection();
+
+        System.out.println("dda ket noi"+connection.getConnection());
     }
 //    private static final String USER_NAME = "root";
 //    private static final String PASSWORD = "0966997711";

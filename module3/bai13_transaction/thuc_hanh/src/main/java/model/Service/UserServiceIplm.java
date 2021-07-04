@@ -60,5 +60,15 @@ public class UserServiceIplm implements UserService {
         userRepository.addUserTransaction(user,permision);
     }
 
+    @Override
+    public void insertUpdateWithoutTransaction() {
+userRepository.insertUpdateWithoutTransaction();
+    }
+
+    @Override
+    public void insertUpdateTransaction() {
+userRepository.insertUpdateTransaction();
+    }
+
 
 }
