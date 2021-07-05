@@ -1,0 +1,11 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="dependence:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/dependence_jar</output-path>
+    <root id="archive" name="dependence.jar">
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/META-INF/MANIFEST.MF" />
+      </element>
+      <element id="library" level="project" name="thuc_hanh" />
+    </root>
+  </artifact>
+</component>
