@@ -25,7 +25,7 @@ public class DBConnection {
         DBConnection connection=new DBConnection();
 
         System.out.println("dda ket noi"+connection.getConnection());
-    }
+}
 //    private static final String USER_NAME = "root";
 //    private static final String PASSWORD = "0966997711";
 //    private static final String HOST = "localhost";

@@ -5,54 +5,55 @@
     <title>gallery</title>
     <meta name="viewport" content="width=device-width, initial-scale=no">
     <link rel="stylesheet" href="../../bootstrap.link/bootstrap4/css/bootstrap.css">
-
+    <style>
+        .color{
+            color: black;
+        }
+    </style>
 </head>
 <body>
-<div>
-    <h1>Responsive Image Gallery</h1>
-    <h5>Resize the browser window to see the effect.</h5>
-</div>
-<div class="row">
-    <div class="col-md-3 col-12 col-sm-6">
-        <div class="card">
-            <img src="https://demo.codegym.vn/web/15/gallery/img_fjords.jpg" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Add a description of the image here</p>
+<nav class="navbar navbar-light bg-light" style="height: 60px">
+    <a class="navbar-brand"><img src="../../img/img_P.jsp" style="height: 60px" width="50px"></a>
+    <h1 style="font-family: Parisienne, Papyrus" >PhÁpCP</h1>
+</nav>
+<nav class="navbar navbar-expand-lg navbar-light bg-light navbar-dark bg-primary">
+    <a class="navbar-brand" href="#">Home</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto d-flex justify-content-center">
+            <li class="nav-item active">
+                <a class="nav-link color" style="color: black" href="#">Employee <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link color"style="color: black" href="#">Customer</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link color"style="color: black" href="#">Service</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link color"style="color: black" href="#">Contract</a>
+            </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+    </div>
+</nav>
+<div class="container-fluid">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm">
+                One of three columns
+            </div>
+            <div class="col-sm">
+                One of three columns
             </div>
         </div>
     </div>
-    <div class="col-md-3 col- col-sm-6">
-        <div class="card">
-            <img src="https://demo.codegym.vn/web/15/gallery/img_forest.jpg" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Add a description of the image here</p>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-3 col- col-sm">
-        <div class="card">
-            <img src="https://demo.codegym.vn/web/15/gallery/img_lights.jpg" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Add a description of the image here</p>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-3 col- col-sm">
-        <div class="card">
-            <img src="https://demo.codegym.vn/web/15/gallery/img_mountains.jpg" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Add a description of the image here</p>
-            </div>
-        </div>
-    </div>
-</div>
-<div>
-    <p>This example use media queries to re-arrange the images on different screen sizes: for screens larger than 700px wide, it will show four images side by side, for screens smaller than 700px, it will show two images side by side.
-        For screens smaller than 500px, the images will stack vertically (100%).</p>
 </div>
 
 <script src="../../bootstrap.link/jquery/jquery-3.5.1.min.js"></script>
