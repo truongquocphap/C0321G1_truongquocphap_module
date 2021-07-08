@@ -10,11 +10,12 @@ public class Customer {
     private String customer_phone;
     private String customer_email;
     private String customer_address;
+    private String customer_code;
 
     public Customer() {
     }
 
-    public Customer(int customer_type_id, String customer_name, String customer_birthday, String customer_gender, String customer_id_card, String customer_phone, String customer_email, String customer_address) {
+    public Customer(int customer_type_id, String customer_name, String customer_birthday, String customer_gender, String customer_id_card, String customer_phone, String customer_email, String customer_address , String customer_code) {
         this.customer_type_id = customer_type_id;
         this.customer_name = customer_name;
         this.customer_birthday = customer_birthday;
@@ -23,9 +24,10 @@ public class Customer {
         this.customer_phone = customer_phone;
         this.customer_email = customer_email;
         this.customer_address = customer_address;
+        this.customer_code = customer_code;
     }
 
-    public Customer(int customer_id, int customer_type_id, String customer_name, String customer_birthday, String customer_gender, String customer_id_card, String customer_phone, String customer_email, String customer_address) {
+    public Customer(int customer_id, int customer_type_id, String customer_name, String customer_birthday, String customer_gender, String customer_id_card, String customer_phone, String customer_email, String customer_address ,String customer_code) {
         this.customer_id = customer_id;
         this.customer_type_id = customer_type_id;
         this.customer_name = customer_name;
@@ -35,6 +37,15 @@ public class Customer {
         this.customer_phone = customer_phone;
         this.customer_email = customer_email;
         this.customer_address = customer_address;
+        this.customer_code = customer_code;
+    }
+
+    public String getCustomer_code() {
+        return customer_code;
+    }
+
+    public void setCustomer_code(String customer_code) {
+        this.customer_code = customer_code;
     }
 
     public int getCustomer_id() {
