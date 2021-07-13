@@ -16,11 +16,11 @@
     <title>Title</title>
 </head>
 <body>
-<nav class="navbar navbar-light bg-light" style="height: 60px">
-    <a class="navbar-brand"><img src="../../img/img_P.jsp" style="height: 60px" width="50px"></a>
+<nav class="navbar navbar-light bg-light" style="height: 60px;color: #6f42c1;background: #9fcdff" >
+    <a class="navbar-brand"><img src="../img/img_P.jpg" style="height: 60px" width="50px"></a>
     <h1 style="font-family: Parisienne, Papyrus" >PhÁpCP</h1>
 </nav>
-<nav class="navbar navbar-expand-lg navbar-light bg-light navbar-dark bg-primary">
+<nav class="navbar navbar-expand-lg navbar-light bg-light navbar-dark bg-primary" style="background-color: #d4edda">
     <a class="navbar-brand" href="#">Home</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -29,10 +29,10 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto d-flex justify-content-center">
             <li class="nav-item active ">
-                <a class="nav-link" style="color: black" href="#" >Employee <span class="sr-only">(current)</span></a>
+                <a class="nav-link" style="color: black" href="/employee" >Employee <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" style="color: black" href="#">Customer</a>
+                <a class="nav-link" style="color: black" href="/customer">Customer</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" style="color: black" href="/service">Service</a>
@@ -66,15 +66,15 @@
                     <h3>Customer List empty!</h3>
                 </c:if>
                 <c:if test="${not empty list_customer}">
-                    <table class="table table-striped table-dark">
+                    <table class="table table-striped table-dark" >
                         <tr>
                             <td scope="col">
                                 <button type="button" class="btn btn-primary">
-                                    <a href="view/create_customer.jsp" style="color: #1d2124">Create User</a></button>
+                                    <a href="view/create_customer.jsp" style="color: #1d2124">Create Customer</a></button>
                             </td>
                         </tr>
                     </table>
-                    <table class="table table-striped table-dark">
+                    <table class=" table-striped table-dark" style="overflow-x:scroll; max-width: 100%; display: inline-block;text-align: center">
                         <thead>
                         <tr>
                             <th scope="col">ID</th>
@@ -119,10 +119,11 @@
                         </tbody>
                     </table>
                 </c:if>
+
             </div>
         </div>
 </div>
-<div class="row">
+<div class="row" style="background: #062c33">
     <ul class="nav col-md-6">
         <li>
             <p>Follow this page</p>

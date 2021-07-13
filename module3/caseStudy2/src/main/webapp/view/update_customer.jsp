@@ -5,6 +5,8 @@
   Time: 2:53 PM
   To change this template use File | Settings | File Templates.
 --%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <link rel="stylesheet" href="../../bootstrap/bootstrap4/css/bootstrap.css">
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
@@ -32,40 +34,65 @@
             <input type="hidden" name="id" value="${customer.customer_id}">
             <%--            <input type="hidden" name="action" value="create">--%>
             <div class="form-group">
-                <label for="inputEmail4">Customer type ID</label>
-                <input class="form-control" name="customer_type_id" placeholder="${customer.customer_type_id}">
+                <label >Customer type ID</label>
+                <input class="form-control" name="customer_type_id">
             </div>
             <div class="form-group ">
-                <label for="inputEmail4">Name</label>
-                <input class="form-control" id="inputEmail4" name="customer_name" placeholder="${customer.customer_name}">
+                <label >Name</label>
+                <td><input type="text" class="form-control" id="customer_name" aria-describedby="customer_name" name="customer_name" value="${customer.customer_name}">
+                    <c:if test="${messName != null}">
+                        <small id="customer_name" class="form-text text-danger">${messName}</small>
+                    </c:if>
+                </td>
             </div>
             <div class="form-group">
-                <label for="inputEmail4">Birthday</label>
-                <input  class="form-control" name="customer_birthday" placeholder="${customer.customer_birthday}">
+                <label >Birthday</label>
+                <td><input type="text" class="form-control" id="customer_birthday" aria-describedby="customer_birthday" name="customer_birthday" value="${customer.customer_birthday}">
+                    <c:if test="${messBirthday != null}">
+                        <small id="customer_birthday" class="form-text text-danger">${messBirthday}</small>
+                    </c:if>
+                </td>
             </div>
             <div class="form-group col-md-12">
-                <label for="inputEmail4">Gender</label>
-                <input  class="form-control" name="customer_gender" placeholder="${customer.customer_gender}">
+                <label >Gender</label>
+                <input class="form-control" name="customer_gender">
             </div>
             <div class="form-group col-md-12">
-                <label for="inputEmail4">ID Card</label>
-                <input class="form-control" name="customer_id_card" placeholder="${customer.customer_id_card}">
+                <label >ID Card</label>
+                <td><input type="text" class="form-control" id="customer_id_card" aria-describedby="customer_id_card" name="customer_id_card" value="${customer.customer_id_card}">
+                    <c:if test="${messIdCard != null}">
+                        <small id="customer_id_card" class="form-text text-danger">${messIdCard}</small>
+                    </c:if>
+                </td>
             </div>
             <div class="form-group col-md-12">
-                <label for="inputEmail4">Phone</label>
-                <input  class="form-control" name="customer_phone" placeholder="${customer.customer_phone}">
+                <label >Phone</label>
+                <td><input type="text" class="form-control" id="customer_phone" aria-describedby="customer_phone" name="customer_phone" value="${customer.customer_phone}">
+                    <c:if test="${messPhone != null}">
+                        <small id="customer_phone" class="form-text text-danger">${messPhone}</small>
+                    </c:if>
+                </td>
             </div>
             <div class="form-group col-md-12">
-                <label for="inputEmail4">Email</label>
-                <input  class="form-control" name="customer_email" placeholder="${customer.customer_email}">
+                <label >Email</label>
+                <td><input type="text" class="form-control" id="customer_email" aria-describedby="customer_email" name="customer_email" value="${customer.customer_email}">
+                    <c:if test="${messEmail != null}">
+                        <small id="customer_email" class="form-text text-danger">${messEmail}</small>
+                    </c:if>
+                </td>
             </div>
             <div class="form-group">
-                <label for="inputAddress">Address</label>
-                <input type="text" class="form-control" id="inputAddress" name="customer_address" placeholder="${customer.customer_address}">
+                <label >Address</label>
+                <input class="form-control" name="customer_address">
             </div>
             <div class="form-group">
-                <label for="inputAddress">Code</label>
-                <input type="text" class="form-control" name="customer_code" placeholder="${customer.customer_code}">
+                <label >Code</label>
+                <td><input type="text" class="form-control" id="customer_code" aria-describedby="customer_code" name="customer_code" value="${customer.customer_code}">
+                    <c:if test="${messCode != null}">
+                        <small id="customer_code" class="form-text text-danger">${messCode}</small>
+                    </c:if>
+                </td>
+
             </div>
             <button type="submit" class="btn btn-primary">Edit</button>
             <%--        <div class="form-group">--%>

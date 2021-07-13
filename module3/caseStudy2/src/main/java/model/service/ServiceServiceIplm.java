@@ -2,14 +2,33 @@ package model.service;
 
 import model.repository.ServiceRepository;
 import model.repository.ServiceRepositoryImpl;
+import model.service.common.Validate;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class ServiceServiceIplm implements ServiceService {
     ServiceRepository serviceRepository=new ServiceRepositoryImpl();
     @Override
-    public void insertService(model.bean.Service service) {
-serviceRepository.insertService(service);
+    public Map<String,String> insertService(model.bean.Service service) {
+        Map<String, String> mapMessage = new HashMap<>();
+        if (Validate.validateServiceCode(service.getService_code()) != null
+                || Validate.validateNumber2(String.valueOf(service.getService_cost())) != null
+                || Validate.validateNumber1(String.valueOf(service.getService_max_people())) != null
+                || Validate.validateNumber2(String.valueOf(service.getPool_area())) != null
+                || Validate.validateNumber1(String.valueOf(service.getNumber_of_floor())) != null
+                || Validate.validateNumber2(String.valueOf(service.getService_area())) != null) {
+            mapMessage.put("code", Validate.validateServiceCode(service.getService_code()));
+            mapMessage.put("area", Validate.validateNumber2(String.valueOf(service.getService_area())));
+            mapMessage.put("cost", Validate.validateNumber2(String.valueOf(service.getService_cost())));
+            mapMessage.put("maxPeople", Validate.validateNumber1(String.valueOf(service.getService_max_people())));
+            mapMessage.put("poolArea", Validate.validateNumber2(String.valueOf(service.getPool_area())));
+            mapMessage.put("numberOfFloor", Validate.validateNumber1(String.valueOf(service.getNumber_of_floor())));
+        } else {
+            serviceRepository.insertService(service);
+        }
+        return mapMessage;
     }
 
     @Override
@@ -28,8 +47,24 @@ serviceRepository.insertService(service);
     }
 
     @Override
-    public boolean updateService(model.bean.Service service) {
-        return serviceRepository.updateService(service);
+    public Map<String,String> updateService(model.bean.Service service) {
+        Map<String, String> mapMessage = new HashMap<>();
+        if (Validate.validateServiceCode(service.getService_code()) != null
+                || Validate.validateNumber2(String.valueOf(service.getService_cost())) != null
+                || Validate.validateNumber1(String.valueOf(service.getService_max_people())) != null
+                || Validate.validateNumber2(String.valueOf(service.getPool_area())) != null
+                || Validate.validateNumber1(String.valueOf(service.getNumber_of_floor())) != null
+                || Validate.validateNumber2(String.valueOf(service.getService_area())) != null) {
+            mapMessage.put("code", Validate.validateServiceCode(service.getService_code()));
+            mapMessage.put("area", Validate.validateNumber2(String.valueOf(service.getService_area())));
+            mapMessage.put("cost", Validate.validateNumber2(String.valueOf(service.getService_cost())));
+            mapMessage.put("maxPeople", Validate.validateNumber1(String.valueOf(service.getService_max_people())));
+            mapMessage.put("poolArea", Validate.validateNumber2(String.valueOf(service.getPool_area())));
+            mapMessage.put("numberOfFloor", Validate.validateNumber1(String.valueOf(service.getNumber_of_floor())));
+        } else {
+            serviceRepository.updateService(service);
+        }
+        return mapMessage;
     }
 
     @Override

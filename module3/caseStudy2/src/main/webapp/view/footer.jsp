@@ -11,7 +11,7 @@
     <title>Title</title>
 </head>
 <body>
-<div class="row">
+<div class="row" style="background: #062c33">
     <ul class="nav col-md-6" >
         <li>
             <p>Follow this page</p>

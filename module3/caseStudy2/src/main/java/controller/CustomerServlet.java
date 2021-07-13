@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
+import java.util.Map;
 
 @WebServlet(name = "CustomerServlet" ,urlPatterns = {"","/customer"})
 public class CustomerServlet extends HttpServlet {
@@ -24,7 +25,7 @@ public class CustomerServlet extends HttpServlet {
         }
         switch (action){
             case "create":
-                insertUser(request,response);
+                insertCustomer(request,response);
                 break;
             case "edit":
                 updateUser(request,response);
@@ -37,7 +38,7 @@ public class CustomerServlet extends HttpServlet {
 
     private void updateUser(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int id= Integer.parseInt(request.getParameter("id"));
-        int type_id= Integer.parseInt(request.getParameter("customer_type_id"));
+        int type_id=Integer.parseInt(request.getParameter("customer_type_id"));
         String name=request.getParameter("customer_name");
         String birthday=request.getParameter("customer_birthday");
         String gender=request.getParameter("customer_gender");
@@ -46,14 +47,22 @@ public class CustomerServlet extends HttpServlet {
         String email=request.getParameter("customer_email");
         String address=request.getParameter("customer_address");
         String code=request.getParameter("customer_code");
-
-
-        Customer customer=  new Customer(id,type_id,name,birthday,gender,id_card,phone,email,address,code);
-        furamaService.updateCustomer(customer);
-        listCustomer(request,response);
+        Customer customer=new Customer(id,type_id,name,birthday,gender,id_card,phone,email,address,code);
+        Map<String,String> map= furamaService.updateCustomer(customer);
+        if (map.isEmpty())
+            listCustomer(request,response);
+        else {
+            request.setAttribute("messName",map.get("name"));
+            request.setAttribute("messBirthday",map.get("birthday"));
+            request.setAttribute("messCode",map.get("code"));
+            request.setAttribute("messEmail",map.get("email"));
+            request.setAttribute("messIdCard",map.get("idCard"));
+            request.setAttribute("messPhone",map.get("phone"));
+            showNewForm(request, response);
+        }
     }
 
-    private void insertUser(HttpServletRequest request, HttpServletResponse response) {
+    private void insertCustomer(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int id=Integer.parseInt(request.getParameter("customer_type_id"));
         String name=request.getParameter("customer_name");
         String birthday=request.getParameter("customer_birthday");
@@ -64,8 +73,19 @@ public class CustomerServlet extends HttpServlet {
         String address=request.getParameter("customer_address");
         String code=request.getParameter("customer_code");
         Customer customer=new Customer(id,name,birthday,gender,id_card,phone,email,address,code);
-        furamaService.insertCustomer(customer);
+        Map<String,String> map= furamaService.insertCustomer(customer);
+        if (map.isEmpty())
         listCustomer(request,response);
+        else {
+            request.setAttribute("messName",map.get("name"));
+            request.setAttribute("messBirthday",map.get("birthday"));
+            request.setAttribute("messCode",map.get("code"));
+            request.setAttribute("messEmail",map.get("email"));
+            request.setAttribute("messIdCard",map.get("idCard"));
+            request.setAttribute("messPhone",map.get("phone"));
+            showNewForm(request, response);
+        }
+
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

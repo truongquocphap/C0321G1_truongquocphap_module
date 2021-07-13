@@ -37,7 +37,7 @@ public class ServiceRepositoryImpl implements ServiceRepository {
                 statement.setString(8,service.getDescription_other_convenience());
                 statement.setDouble(9,service.getPool_area());
                 statement.setInt(10,service.getNumber_of_floor());
-                statement.setString(11,service.getDescription_other_convenience());
+                statement.setString(11,service.getService_code());
 
                 statement.executeUpdate();
             }

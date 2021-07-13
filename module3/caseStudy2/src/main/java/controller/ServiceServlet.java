@@ -1,6 +1,5 @@
 package controller;
 
-import model.bean.Customer;
 import model.bean.Service;
 import model.service.ServiceService;
 import model.service.ServiceServiceIplm;
@@ -13,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
+import java.util.Map;
 
 @WebServlet(name = "ServiceServlet" , urlPatterns ="/service")
 public class ServiceServlet extends HttpServlet {
@@ -24,36 +24,62 @@ public class ServiceServlet extends HttpServlet {
         }
         switch (action){
             case "create":
-                insertUser(request,response);
+                insertService(request,response);
                 break;
             case "edit":
-                updateUser(request,response);
+                updateService(request,response);
                 break;
             case "delete":
                 deleteUser(request,response);
                 break;
         }
     }
-    private void updateUser(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    private void updateService(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int id= Integer.parseInt(request.getParameter("id"));
-        String service_name= request.getParameter("service_name");
-        int area=Integer.parseInt(request.getParameter("service_area"));
-        double cost=Double.parseDouble(request.getParameter("service_cost"));
-        int people=Integer.parseInt(request.getParameter("service_max_people"));
-        int rent_type_id=Integer.parseInt(request.getParameter("rent_type_id"));
-        int serviceTypeId=Integer.parseInt(request.getParameter("service_type_id"));
-
-        String room=request.getParameter("strandard_room");
-        String descriptionOtherConvenience=request.getParameter("description_other_convenience");
-        double pool_area=Double.parseDouble(request.getParameter("pool_area"));
-        int floor=Integer.parseInt(request.getParameter("number_of_floor"));
-
-        String code=request.getParameter("service_code");
-
-
-        Service  service=  new Service(id,service_name,area,cost,people,rent_type_id,serviceTypeId,room,descriptionOtherConvenience,pool_area,floor,code);
-        serviceIplm.updateService(service);
-        list_service(request,response);
+        String serviceCode = request.getParameter("serviceCode");
+        String serviceName = request.getParameter("service_name");
+        int serviceArea = Integer.parseInt(request.getParameter("service_area"));
+        double serviceCost = Double.parseDouble(request.getParameter("service_cost"));
+        int serviceMaxPeople = Integer.parseInt(request.getParameter("service_max_people"));
+        int rentTypeId = Integer.parseInt(request.getParameter("rent_type_id"));
+        int serviceTypeId = Integer.parseInt(request.getParameter("service_type_id"));
+        String standardRoom = request.getParameter("strandard_room");
+        String descriptionOtherConvenience = request.getParameter("description_other_convenience");
+        double poolArea = Double.parseDouble(request.getParameter("pool_area"));
+        int numberOfFloor = Integer.parseInt(request.getParameter("number_of_floor"));
+        Service  service=  new Service(id,serviceName,serviceArea,serviceCost,serviceMaxPeople,rentTypeId,serviceTypeId,standardRoom,descriptionOtherConvenience,poolArea,numberOfFloor,serviceCode);
+        Map<String, String> mapMessage = serviceIplm.updateService(service);
+        if (mapMessage.isEmpty()){
+            showNewForm(request, response);
+        }else {
+            request.setAttribute("messCode", mapMessage.get("code"));
+            request.setAttribute("messArea", mapMessage.get("area"));
+            request.setAttribute("messCost", mapMessage.get("cost"));
+            request.setAttribute("messMaxPeople", mapMessage.get("maxPeople"));
+            request.setAttribute("messPoolArea", mapMessage.get("poolArea"));
+            request.setAttribute("messNumberOfFloor", mapMessage.get("numberOfFloor"));
+            request.setAttribute("service", service);
+            updateService(request,response);
+        }
+//        int id= Integer.parseInt(request.getParameter("id"));
+//        String service_name= request.getParameter("service_name");
+//        int area=Integer.parseInt(request.getParameter("service_area"));
+//        double cost=Double.parseDouble(request.getParameter("service_cost"));
+//        int people=Integer.parseInt(request.getParameter("service_max_people"));
+//        int rent_type_id=Integer.parseInt(request.getParameter("rent_type_id"));
+//        int serviceTypeId=Integer.parseInt(request.getParameter("service_type_id"));
+//
+//        String room=request.getParameter("strandard_room");
+//        String descriptionOtherConvenience=request.getParameter("description_other_convenience");
+//        double pool_area=Double.parseDouble(request.getParameter("pool_area"));
+//        int floor=Integer.parseInt(request.getParameter("number_of_floor"));
+//
+//        String code=request.getParameter("service_code");
+//
+//
+//        Service  service=  new Service(id,service_name,area,cost,people,rent_type_id,serviceTypeId,room,descriptionOtherConvenience,pool_area,floor,code);
+//        serviceIplm.updateService(service);
+//        list_service(request,response);
     }
 
     private void list_service(HttpServletRequest request, HttpServletResponse response) {
@@ -69,23 +95,48 @@ public class ServiceServlet extends HttpServlet {
         }
     }
 
-    private void insertUser(HttpServletRequest request, HttpServletResponse response) {
-        String service_name= request.getParameter("service_name");
-        int area=Integer.parseInt(request.getParameter("service_area"));
-        double cost=Double.parseDouble(request.getParameter("service_cost"));
-        int people=Integer.parseInt(request.getParameter("service_max_people"));
-        int rent_type_id=Integer.parseInt(request.getParameter("rent_type_id"));
-        int serviceTypeId=Integer.parseInt(request.getParameter("service_type_id"));
-        String room=request.getParameter("strandard_room");
-        String descriptionOtherConvenience=request.getParameter("description_other_convenience");
-        double pool_area=Double.parseDouble(request.getParameter("pool_area"));
-        int floor=Integer.parseInt(request.getParameter("number_of_floor"));
-        String code=request.getParameter("service_code");
-
-
-        Service  service=  new Service(service_name,area,cost,people,rent_type_id,serviceTypeId,room,descriptionOtherConvenience,pool_area,floor,code);
-        serviceIplm.insertService(service);
-        list_service(request,response);
+    private void insertService(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String serviceCode = request.getParameter("service_code");
+        String serviceName = request.getParameter("service_name");
+        int serviceArea = Integer.parseInt(request.getParameter("service_area"));
+        double serviceCost = Double.parseDouble(request.getParameter("service_cost"));
+        int serviceMaxPeople = Integer.parseInt(request.getParameter("service_max_people"));
+        int rentTypeId = Integer.parseInt(request.getParameter("rent_type_id"));
+        int serviceTypeId = Integer.parseInt(request.getParameter("service_type_id"));
+        String standardRoom = request.getParameter("strandard_room");
+        String descriptionOtherConvenience = request.getParameter("description_other_convenience");
+        double poolArea = Double.parseDouble(request.getParameter("pool_area"));
+        int numberOfFloor = Integer.parseInt(request.getParameter("number_of_floor"));
+        Service  service=  new Service(serviceName,serviceArea,serviceCost,serviceMaxPeople,rentTypeId,serviceTypeId,standardRoom,descriptionOtherConvenience,poolArea,numberOfFloor,serviceCode);
+        Map<String, String> mapMessage = serviceIplm.insertService(service);
+        if (mapMessage.isEmpty()){
+            list_service(request, response);
+        }else {
+            request.setAttribute("messCode", mapMessage.get("code"));
+            request.setAttribute("messArea", mapMessage.get("area"));
+            request.setAttribute("messCost", mapMessage.get("cost"));
+            request.setAttribute("messMaxPeople", mapMessage.get("maxPeople"));
+            request.setAttribute("messPoolArea", mapMessage.get("poolArea"));
+            request.setAttribute("messNumberOfFloor", mapMessage.get("numberOfFloor"));
+            request.setAttribute("service", service);
+            showNewForm(request,response);
+        }
+//        String service_name= request.getParameter("service_name");
+//        int area=Integer.parseInt(request.getParameter("service_area"));
+//        double cost=Double.parseDouble(request.getParameter("service_cost"));
+//        int people=Integer.parseInt(request.getParameter("service_max_people"));
+//        int rent_type_id=Integer.parseInt(request.getParameter("rent_type_id"));
+//        int serviceTypeId=Integer.parseInt(request.getParameter("service_type_id"));
+//        String room=request.getParameter("strandard_room");
+//        String descriptionOtherConvenience=request.getParameter("description_other_convenience");
+//        double pool_area=Double.parseDouble(request.getParameter("pool_area"));
+//        int floor=Integer.parseInt(request.getParameter("number_of_floor"));
+//        String code=request.getParameter("service_code");
+//
+//
+//        Service  service=  new Service(service_name,area,cost,people,rent_type_id,serviceTypeId,room,descriptionOtherConvenience,pool_area,floor,code);
+//        serviceIplm.insertService(service);
+//        list_service(request,response);
     }
     private void deleteUser(HttpServletRequest request, HttpServletResponse response) throws IOException {
         int id=Integer.parseInt( request.getParameter("id"));

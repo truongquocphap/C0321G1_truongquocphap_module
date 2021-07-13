@@ -181,4 +181,6 @@ SELECT u.username,u.`password`, r.role_id from `user` u left join user_role ur o
 left join `role` r on r.role_id = ur.role_id; 
 ​
 SELECT * from view_user where username = "quocphap" AND `password` = "123";
+insert into service (service_name,service_area,service_cost,service_max_people,rent_type_id,service_type_id,strandard_room,description_other_convenience,pool_area ,number_of_floor,service_code )
+             VALUES("Tui",12,10000,12,2,1,"uu tien","rong rai",200,12,111)
 ​
