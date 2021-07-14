@@ -1,13 +1,13 @@
-package service;
+package dictionary.controller.repository;
 
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Repository;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
-
-public class DictionaryService {
-    public static String dictionary(String vocabulary){
+@Repository
+public class DictionaryRepositoryImpl implements DictionaryRepository {
+    public  String dictionary(String vocabulary){
         Map<String,String> map=new HashMap<>();
         map.put("Hello","Xin chào");
         map.put("Why","Tại sao");

@@ -1,19 +1,24 @@
-package controller;
+package dictionary.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import service.DictionaryService;
+import dictionary.controller.service.DictionaryService;
 
 @RequestMapping("")
 @Controller
 public class DictionaryController {
+    @Autowired
+    DictionaryService dictionary;
+
     @GetMapping("/dictionary")
+
     public String dictionary(@RequestParam String vocabulary, Model model){
 
-       String result= DictionaryService.dictionary(vocabulary);
+       String result= dictionary.dictionary(vocabulary);
         model.addAttribute("result",result);
         return "result";
     }
