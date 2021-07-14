@@ -1,13 +1,13 @@
-package dictionary.controller.service;
+package dictionary.service;
 
+import dictionary.repository.DictionaryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import dictionary.controller.repository.DictionaryRepository;
 
 @Service
 public class DictionaryServiceImpl implements DictionaryService {
 @Autowired
-    DictionaryRepository dictionary;
+DictionaryRepository dictionary;
     @Override
     public String dictionary(String vocabulary) {
         return dictionary.dictionary(vocabulary);

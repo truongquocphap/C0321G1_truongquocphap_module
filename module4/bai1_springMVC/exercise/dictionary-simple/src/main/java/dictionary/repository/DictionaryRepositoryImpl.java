@@ -1,4 +1,4 @@
-package dictionary.controller.repository;
+package dictionary.repository;
 
 import org.springframework.stereotype.Repository;
 

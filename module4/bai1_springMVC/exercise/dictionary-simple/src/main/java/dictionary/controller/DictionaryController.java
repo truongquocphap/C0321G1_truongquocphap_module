@@ -6,7 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import dictionary.controller.service.DictionaryService;
+import dictionary.service.DictionaryService;
 
 @RequestMapping("")
 @Controller
