@@ -15,13 +15,14 @@ public class ConvertCurrencyController {
     IConvert convert;
 
     @GetMapping("/currency")
-    public String convert(@RequestParam double usd,@RequestParam double rate, Model model){
-        double result=convert.convert(usd,rate);
-        model.addAttribute("result",result);
+    public String convert(@RequestParam double usd, @RequestParam double rate, Model model) {
+        double result = convert.convert(usd, rate);
+        model.addAttribute("result", result);
         return "result";
     }
+
     @GetMapping
-    public String showInputUsd(){
+    public String showInputUsd() {
         return "input-data";
     }
 }
