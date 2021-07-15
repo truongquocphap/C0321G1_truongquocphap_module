@@ -12,13 +12,13 @@ import dictionary.service.DictionaryService;
 @Controller
 public class DictionaryController {
     @Autowired
-    DictionaryService dictionary;
+    DictionaryService dictionaryService;
 
     @GetMapping("/dictionary")
 
     public String dictionary(@RequestParam String vocabulary, Model model){
 
-       String result= dictionary.dictionary(vocabulary);
+       String result= dictionaryService.convert(vocabulary);
         model.addAttribute("result",result);
         return "result";
     }

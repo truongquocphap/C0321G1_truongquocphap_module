@@ -9,7 +9,7 @@ public class DictionaryServiceImpl implements DictionaryService {
 @Autowired
 DictionaryRepository dictionary;
     @Override
-    public String dictionary(String vocabulary) {
+    public String convert(String vocabulary) {
         return dictionary.dictionary(vocabulary);
     }
 }
