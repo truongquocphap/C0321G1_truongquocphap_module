@@ -22,7 +22,7 @@
     <input type="button" onclick="opera('/')" value="/" style="width: 50px">
     <input type="submit" value="Result"><br>
 </form>
-<h3>Result Division :${result}</h3>
+<h3>Result Division : ${result}</h3>
 <script>
     function opera(opera) {
         document.getElementById("calculate").value=opera;

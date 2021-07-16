@@ -18,11 +18,13 @@
   <input type="checkbox" name="condiments" value="Tomato"> <span>Tomato</span>
   <input type="checkbox" name="condiments" value="Mustard"> <span>Mustard</span>
   <input type="checkbox" name="condiments" value="Sprouts"> <span>Sprouts</span>
+  <input type="hidden" name="condiments" value="">
     <input type="submit" value="Save">
   </form>
   <h1>Selected Sandwich Condiments</h1>
 <c:forEach items="${condiment}" var="condiments">
 <h5>${condiments}</h5>
 </c:forEach>
+  
   </body>
 </html>

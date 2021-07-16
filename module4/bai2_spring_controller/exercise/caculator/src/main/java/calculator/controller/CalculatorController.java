@@ -11,15 +11,22 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class CalculatorController {
     @Autowired
     ICalculate iCalculate;
+
     @GetMapping("")
-    public String calculator(){
+    public String calculator() {
         return "calculator";
     }
     @GetMapping("calculator")
     public String calculate(@RequestParam("number") double[] number, @RequestParam("operator") String operator, Model model) {
-     double result = iCalculate.calculate(number,operator);
-model.addAttribute("result",result);
-        return "calculator";
+        if(number[1]==0){
+            model.addAttribute("result","không thể chia cho 0");
+            return "calculator";
+        }else {
+            double result = iCalculate.calculate(number, operator);
+            model.addAttribute("result", result);
+            return "calculator";
+        }
+
     }
 
 }
